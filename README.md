@@ -1,9 +1,8 @@
 usage for running maven project:
 \*check your maven version:
 
-```mvn -v
+```mvn -v```
 
-```
 
 if not, feel free to install maven :D
 
