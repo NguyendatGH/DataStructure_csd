@@ -104,22 +104,61 @@ public class SinglyLinkedList {
         }
     }
 
-    void displayNode(String textDisplay
-    ) {
+    void insertNode(int pos, int val) {
+        int size = getListSize();
+        if (pos < 0 || pos >= size) {
+            throw new Error("out of list");
+        }
+        if (pos == 0) {
+            addFirst(val);
+        } else {
+            int currIndex = 0;
+            Node currNode = head;
+            while (currIndex < pos - 1) {
+                currNode = currNode.next;
+                currIndex++;
+            }
+            Node newNode = new Node(val, null);
+            newNode.next = currNode.next;
+            currNode.next = newNode;
+
+        }
+
+    }
+
+    void deleteNode(int pos) {
+        int size = getListSize();
+        if (pos < 0 || pos >= size) {
+            throw new Error("out of list");
+        }
+
+        if (pos == 0) {
+            removeFirstNode();
+        } else {
+            int currIndex = 0;
+            Node currNode = head;
+            while (currIndex < pos - 1) {
+                currNode = currNode.next;
+                currIndex += 1;
+            }
+            Node tmp = currNode.next.next;
+            currNode.next = tmp;
+        }
+    }
+
+    void displayNode(String textDisplay) {
         System.out.println("");
         System.out.println(textDisplay);
         Node currNode = head;
         if (isEmpty()) {
             System.out.println("nothing to print out!");
         } else {
-
             while (currNode != null) {
-                System.out.print(currNode.infor + ", ");
+                System.out.print(currNode.value + ", ");
                 currNode = currNode.next;
             }
         }
         System.out.println("");
-
     }
 
     public static void main(String[] args) {
@@ -148,6 +187,12 @@ public class SinglyLinkedList {
         m.displayNode("Add node at first!");
         m.addWithIndex(3, 10);
         m.displayNode("Add value 10 at index 3: ");
+
+        m.insertNode(3, 99);
+        m.displayNode("add value node have value 99 at index 3");
+
+        m.deleteNode(3);
+        m.displayNode("remove node have pos = 3 in list: ");
         // System.out.println("clear node: ");
         // m.clearLinkedList();
     }

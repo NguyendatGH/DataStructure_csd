@@ -1,14 +1,14 @@
 package com.example.model;
 
 public class Node {
-    public int infor;
+    public int value;
     public Node next;
 
     public Node(){
 
     }
-    public Node(int value, Node p){
-        infor = value;
+    public Node(int valueInput, Node p){
+        value = valueInput;
         next = p;
     }
     
