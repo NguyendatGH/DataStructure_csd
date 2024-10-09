@@ -1,0 +1,7 @@
+{
+    "java.project.sourcePaths": [
+        "linkedList/project/src/main/java/controller",
+        "linkedList/project/src/main/java/com/controller"
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
+}
