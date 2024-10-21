@@ -40,13 +40,14 @@ public class Stack_LinkedList {
         System.out.println(text);
         Node currNode = head;
         while (currNode != null) {
-            System.out.println(currNode.infor);
+            System.out.print(currNode.infor + ",");
             currNode = currNode.next;
         }
+        System.out.println("");
     }
 
     public static void main(String[] args) {
-        System.out.println("Hello world");
+        System.out.println("Stack - linkedlist implementation");
         Stack_LinkedList st_linkedList = new Stack_LinkedList();
 
         st_linkedList.push(1);
@@ -54,9 +55,17 @@ public class Stack_LinkedList {
         st_linkedList.push(3);
         st_linkedList.push(4);
         st_linkedList.push(5);
+        st_linkedList.displayStack("Stack: ");
 
 
-        st_linkedList.displayStack("tmp");
+        System.out.println("delete first: ");
+        st_linkedList.pop();
+        st_linkedList.displayStack("Stack after using pop(): ");
 
+        System.out.println("add first: ");
+        st_linkedList.push(100);
+        st_linkedList.displayStack("Stack after add new value (100) : ");
+
+       
     }
 }
