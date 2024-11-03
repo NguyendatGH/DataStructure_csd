@@ -1,4 +1,6 @@
 com/example/DelNodeByMerge.class
 com/example/Node.class
+com/example/DFS.class
 com/example/Main.class
 com/example/DelNodeByCopy.class
+com/example/BFS.class
