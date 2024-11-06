@@ -35,6 +35,16 @@ public class Main {
         System.out.println(root.value);
         inorderTraversalRecursive(root.right);
     }
+    public void addSampleData(){
+        int count = 10;
+        int sample_val = 0;
+        int range = (10 - 1) + 1;
+        while(count >= 0){
+            sample_val = (int) (Math.random() * range) + 1;
+            insertNode(sample_val);
+            count--;
+        }
+    }
 
     public static void main(String[] args) {
 
@@ -44,50 +54,49 @@ public class Main {
         DelNodeByMerge m = new DelNodeByMerge();
         DFS d = new DFS();
         BFS b = new BFS();
+        BuildBalanceTree bl = new BuildBalanceTree(); 
         while (true) {
             System.out.println("\nMenu:");
             System.out.println("1. Insert value into BST: ");
-            System.out.println("2. Delete by copying");
-            System.out.println("3. Delete by merge");
-            System.out.println("4. DFS traversal");
-            System.out.println("5. BFS traversal");
-            System.out.println("6. Display tree");
-            System.out.println("7. Exit");
+            System.out.println("2. Add sample data(default data)");
+            System.out.println("3. Delete by copying");
+            System.out.println("4. Delete by merge");
+            System.out.println("5. DFS traversal");
+            System.out.println("6. BFS traversal");
+            System.out.println("7. Display tree");
+            System.out.println("8. Build balance tree");
+            System.out.println("9. Exit");
             System.out.print("enter option: ");
             int choice = scanner.nextInt();
 
             switch (choice) {
                 case 1: {
-                    int fixedSize = 0;
-                    boolean isContinue = true;
-                    while (isContinue) {
                         System.out.print("value ");
                         int value = scanner.nextInt();
                         bst.insertNode(value);
                         System.out.println("added " + value + " to BST.");
-                        if (fixedSize == 10) {
-                            isContinue = false;
-                        } else {
-                            fixedSize++;
-                        }
-                    }
                     break;
                 }
-                case 2: {
+                case 2:{
+                    bst.addSampleData();
+                    System.out.println("--success--");
+                    break;
+                }
+                case 3: {
                     System.out.println("Delete by copying");
                     System.out.println("enter value to delete: ");
                     int val1 = scanner.nextInt();
                     bst.root = c.deleteNodeByCopying(bst.root, val1);
                     break;
                 }
-                case 3: {
+                case 4: {
                     System.out.println("Delete by merge: ");
                     System.out.println("enter value to delete: ");
                     int val2 = scanner.nextInt();
                     bst.root = m.deleteNodeByMerge(bst.root, val2);
                     break;
                 }
-                case 4: {
+                case 5: {
                     System.out.println("DFS traversal");
                     System.out.println("press 1 --> preorder");
                     System.out.println("press 2 --> inorder");
@@ -105,17 +114,26 @@ public class Main {
                     }
                     break;
                 }
-                case 5: {
+                case 6: {
                     System.out.println("BFS traversal");
                     b.bfs(bst.root);
                     break;
                 }
-                case 6: {
+                case 7: {
                     System.out.println("tree: ");
                     bst.TreeTraversal(bst.root);
                     break;
                 }
-                case 7: {
+                case 8:{
+                    System.out.println("root before balance: "+ bst.root.value);
+                    System.out.println("---build balance tree: ");
+                    bl.balanceTree(bst.root);
+                    System.out.println("root after balance: "+ bst.root.value);
+                    System.out.println("build success! tree after balances: ");
+                    b.bfs(bst.root);
+                    break;
+                }
+                case 9: {
                     System.out.println("End!.");
                     scanner.close();
                     System.exit(0);
